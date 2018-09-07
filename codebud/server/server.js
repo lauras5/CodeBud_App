@@ -17,17 +17,11 @@ mongoose.connect('mongodb://localhost/codebudDb');
 
 const User = require('./models/userModel');
 
-// CHANGE: USE "createStrategy" INSTEAD OF "authenticate"
-passport.use(User.createStrategy());
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
 app.get('/', function (req, res) {
     res.send('Hello World')
 })
 
-const testUsers = require('./scripts/seeds').testUsers();
+// const testUsers = require('./scripts/seeds').testUsers();
 
 app.listen(PORT, () => {
     console.log(`🌎 ==> Server now on port ${PORT}!`);
